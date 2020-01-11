@@ -14,18 +14,18 @@ static void init_node(struct node* n, unsigned int value)
 
 static void init_node_lr(struct node* f, struct node* l, struct node* r)
 {
-	f->left = l;
-	f->right = r;
+    f->left = l;
+    f->right = r;
 }
 
 static void parse_node(struct node *root)
 {
-    if(root->left)
-	    parse_node(root->left);
-    if(root->right)
-	    parse_node(root->right);
-
-    printf("value = %d.\n", root->value);
+    if(root)
+    {
+        parse_node(root->left);
+        parse_node(root->right);
+        printf("value = %d.\n", root->value);
+    }
 }
 
 struct node node0, node1, node2, node3, node4, node5, node6;
@@ -44,6 +44,6 @@ int main(void)
    init_node_lr(&node2, &node5, &node6);
 
    parse_node(&node0);
-   printf("%s line %d.\n", __func__, __LINE__);
+
    return 0;
 }
